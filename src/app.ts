@@ -1,5 +1,6 @@
 import { Server } from './server';
-import { configureContainer } from '@architecture/ioc';
+import { configureContainer } from '@architecture/ioc/configureContainer';
+import { DependencyContainer } from 'tsyringe';
 
 export class App {
   private server?: Server;
@@ -7,7 +8,8 @@ export class App {
   async start() {
     const port = process.env.PORT || 3000;
     this.server = new Server(port as string);
-    configureContainer();
+    const containerBuilder: DependencyContainer = this.server.getContainerBuilder();
+    configureContainer(containerBuilder);
     return this.server.listen();
   }
 }

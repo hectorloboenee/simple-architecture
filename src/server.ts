@@ -4,29 +4,37 @@ import bodyParser from 'body-parser';
 import Router from 'express-promise-router';
 import errorHandler from 'errorhandler';
 import httpStatus from 'http-status';
-import { registerEndpoints } from '@api/endpoints';
+import { registerEndpoints } from '@architecture/ioc/endpointRegister';
+import { ContainerBuilderFactory } from '@architecture/ioc/containerFactory';
+import { DependencyContainer } from 'tsyringe';
 
 export class Server {
   private express: express.Express;
-  private port: string;
+  private readonly port: string;
   private httpServer?: http.Server;
+  private readonly containerBuilder: DependencyContainer;
 
   constructor(port: string) {
     this.port = port;
     this.express = express();
     this.express.use(bodyParser.json());
     this.express.use(bodyParser.urlencoded({ extended: true }));
+    this.containerBuilder = ContainerBuilderFactory.getInstance();
 
     const router = Router();
     router.use(errorHandler());
     this.express.use(router);
 
-    registerEndpoints(router);
+    registerEndpoints(this.containerBuilder, router);
 
     router.use((err: Error, request: Request, response: Response, next: Function) => {
       console.log(err);
       response.status(httpStatus.INTERNAL_SERVER_ERROR).send(err.message);
     });
+  }
+
+  getContainerBuilder(): DependencyContainer {
+    return this.containerBuilder;
   }
 
   async listen(): Promise<void> {
