@@ -4,10 +4,10 @@ import { Route } from '@architecture/Route';
 import { injectable } from 'tsyringe';
 
 @injectable()
-export default class Status implements Route {
+export default class Test implements Route {
   registerRoutes(router: Router): void {
-    router.get('/', (req: Request, res: Response) => {
-      res.status(httpStatus.OK).json('ok');
+    router.get('/test', (req: Request, res: Response) => {
+      res.status(httpStatus.OK).json({ message: 'Test' });
     });
   }
 }

@@ -1,7 +1,8 @@
 import 'reflect-metadata';
 import { App } from './app';
+import { container } from 'tsyringe';
 
-const app = new App();
+const app = container.resolve(App);
 app.start().catch(e => {
   console.error(e);
   process.exit(1);
