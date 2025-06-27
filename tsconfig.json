@@ -12,6 +12,8 @@
     "paths": {
       "@api/*": ["./api/*"],
       "@architecture/*": ["./architecture/*"]
-    }
+    },
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   }
 }

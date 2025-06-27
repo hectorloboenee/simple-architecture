@@ -1,13 +1,16 @@
 import { Server } from './server';
-import { configureContainer } from '@architecture/ioc';
+import { configureContainer } from '@architecture/ioc/configureContainer';
+import { container, DependencyContainer, injectable } from 'tsyringe';
+import { RouterBuilder } from './routerBuilder';
 
+@injectable()
 export class App {
-  private server?: Server;
+  constructor(private server: Server) {}
 
   async start() {
-    const port = process.env.PORT || 3000;
-    this.server = new Server(port as string);
-    configureContainer();
+    container.registerSingleton(RouterBuilder);
+    // const containerBuilder: DependencyContainer = this.server.getContainerBuilder();
+    // configureContainer(containerBuilder);
     return this.server.listen();
   }
 }
