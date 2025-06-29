@@ -3,7 +3,7 @@ import { Router } from 'express';
 import { injectable } from 'tsyringe';
 
 @injectable()
-export class RouterBuilder {
+export class Builder {
   public router: Router;
 
   constructor() {

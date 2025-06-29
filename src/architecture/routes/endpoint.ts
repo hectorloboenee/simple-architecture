@@ -1,17 +1,18 @@
 import { Router } from 'express';
 
 export abstract class Endpoint {
-  protected router?: Router;
+  protected router!: Router;
 
   constructor() {}
 
-  setRouterBuilder(router: Router) {
+  use(router: Router) {
     this.router = router;
+    this.registerRoute();
   }
 
-  registerRouter(router: Router) {
-    this.method(router);
+  private registerRoute(): void {
+    this.run();
   }
 
-  abstract method(router: Router): void;
+  abstract run(): void;
 }
