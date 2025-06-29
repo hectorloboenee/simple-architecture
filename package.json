@@ -14,6 +14,7 @@
     "body-parser": "^2.2.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
+    "dotenv": "^17.0.0",
     "errorhandler": "^1.5.1",
     "express": "^5.1.0",
     "express-promise-router": "^4.1.1",
@@ -26,13 +27,20 @@
     "typescript": "^5.8.3"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.30.0",
     "@types/body-parser": "^1.19.6",
     "@types/cookie-parser": "^1.4.9",
     "@types/cors": "^2.8.19",
     "@types/errorhandler": "^1.5.3",
     "@types/express": "^5.0.3",
+    "eslint": "^9.30.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.5.1",
+    "globals": "^16.2.0",
     "prettier": "^3.6.1",
     "ts-node-dev": "^2.0.0",
-    "tsconfig-paths": "^4.2.0"
+    "tsconfig-paths": "^4.2.0",
+    "typescript-eslint": "^8.35.0"
   }
 }
