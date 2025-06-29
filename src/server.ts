@@ -5,8 +5,8 @@ import errorHandler from 'errorhandler';
 import httpStatus from 'http-status';
 import { Register } from '@architecture/routes/register';
 import { injectable } from 'tsyringe';
-import { RouterBuilder } from './routerBuilder';
-import { env } from './environmentConfig';
+import { Builder } from '@architecture/routes/builder';
+import { env } from './environment';
 
 @injectable()
 export class Server {
@@ -15,7 +15,7 @@ export class Server {
   private httpServer?: http.Server;
 
   constructor(
-    private routerBuilder: RouterBuilder,
+    private routerBuilder: Builder,
     private endpointRegister: Register
   ) {
     this.port = env.PORT || 3000;
