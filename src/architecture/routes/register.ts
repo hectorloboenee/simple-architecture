@@ -13,7 +13,7 @@ export class Register {
   }
 
   public registerEndpoints(): void {
-    const endpointsPaths = glob.sync(API_DIRNAME + '/**/*.endpoint.*');
+    const endpointsPaths = glob.sync(`${API_DIRNAME}/**/*.endpoint.*`);
     endpointsPaths.map(endpointPath => this.register(endpointPath));
   }
 
