@@ -14,6 +14,7 @@
       "@architecture/*": ["./architecture/*"]
     },
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "resolveJsonModule": true
   }
 }

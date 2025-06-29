@@ -1,13 +1,12 @@
-import express, { Request, Response, Router } from 'express';
+import express, { Request, Response } from 'express';
 import * as http from 'http';
 import bodyParser from 'body-parser';
-// import Router from 'express-promise-router';
 import errorHandler from 'errorhandler';
 import httpStatus from 'http-status';
-import { EndpointsRegister } from '@architecture/ioc/endpointsRegister';
-import { ContainerBuilderFactory } from '@architecture/ioc/containerFactory';
-import { DependencyContainer, injectable } from 'tsyringe';
+import { Register } from '@architecture/routes/register';
+import { injectable } from 'tsyringe';
 import { RouterBuilder } from './routerBuilder';
+import { env } from './environmentConfig';
 
 @injectable()
 export class Server {
@@ -17,22 +16,18 @@ export class Server {
 
   constructor(
     private routerBuilder: RouterBuilder,
-    private endpointRegister: EndpointsRegister
+    private endpointRegister: Register
   ) {
-    this.port = process.env.PORT || 3000;
+    this.port = env.PORT || 3000;
     this.express = express();
     this.express.use(bodyParser.json());
     this.express.use(bodyParser.urlencoded({ extended: true }));
-    // this.containerBuilder = ContainerBuilderFactory.getInstance();
 
-    // const router = Router();
     const router = this.routerBuilder.getRouter();
     router.use(errorHandler());
     this.express.use(router);
-    this.endpointRegister.setRouter(router);
+    this.endpointRegister.use(router);
     this.endpointRegister.registerEndpoints();
-
-    // registerEndpoints(router);
 
     router.use((err: Error, request: Request, response: Response, next: Function) => {
       console.log(err);

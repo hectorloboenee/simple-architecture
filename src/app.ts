@@ -1,6 +1,5 @@
 import { Server } from './server';
-import { configureContainer } from '@architecture/ioc/configureContainer';
-import { container, DependencyContainer, injectable } from 'tsyringe';
+import { container, injectable } from 'tsyringe';
 import { RouterBuilder } from './routerBuilder';
 
 @injectable()
@@ -9,8 +8,6 @@ export class App {
 
   async start() {
     container.registerSingleton(RouterBuilder);
-    // const containerBuilder: DependencyContainer = this.server.getContainerBuilder();
-    // configureContainer(containerBuilder);
     return this.server.listen();
   }
 }

@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express';
 import httpStatus from 'http-status';
-import { Route } from '@architecture/Route';
+import { Route } from '@architecture/routes/route';
 import { injectable } from 'tsyringe';
 
 @injectable()
