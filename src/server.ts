@@ -4,13 +4,10 @@ import bodyParser from 'body-parser';
 import errorHandler from 'errorhandler';
 import httpStatus from 'http-status';
 import { Register } from '@architecture/routes/register';
-import { container, injectable } from 'tsyringe';
+import { injectable } from 'tsyringe';
 import { Builder } from '@architecture/routes/builder';
 import { env } from './environment';
-import { HandlerFactory } from '@architecture/cqrs/command/handlerFactory';
-import { CommandHandlerFactory } from '@architecture/ioc/cqrs/commandHandlerFactory';
-import { Bus } from '@architecture/cqrs/command/Bus';
-import { SyncBus } from '@architecture/cqrs/command/syncBus';
+import { RegisterCqrs } from '@architecture/ioc/cqrs/register';
 
 @injectable()
 export class Server {
@@ -32,8 +29,7 @@ export class Server {
     this.express.use(router);
     this.endpointRegister.use(router);
 
-    container.register<HandlerFactory>('HandlerFactory', { useClass: CommandHandlerFactory });
-    container.register<Bus>('Bus', { useClass: SyncBus });
+    RegisterCqrs.register();
 
     this.endpointRegister.registerEndpoints();
 
