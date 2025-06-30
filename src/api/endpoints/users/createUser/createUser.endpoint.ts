@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 @injectable()
 export default class CreateUser extends Endpoint {
-  constructor(@inject('SyncBusDecorator') private bus: Bus) {
+  constructor(@inject('SyncBus') private bus: Bus) {
     super();
     this.bus = bus;
   }
@@ -18,7 +18,7 @@ export default class CreateUser extends Endpoint {
       const id: string = uuidv4();
       const createUser: CreateUserCommand = new CreateUserCommand(id, 'hloboc', 'password1234');
       await this.bus.Dispatch(createUser);
-      response.status(httpStatus.CREATED).send(createUser);
+      response.status(httpStatus.CREATED).json({ id: id });
     });
   }
 }

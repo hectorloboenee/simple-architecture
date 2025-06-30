@@ -10,8 +10,6 @@ export abstract class ValidatorBase<TCommand extends Command> implements Validat
   }
 
   async validate(command: TCommand): Promise<boolean> {
-    const validate = await this.schema.validate(command);
-    console.log(validate);
     return await this.schema.isValid(command);
   }
 }

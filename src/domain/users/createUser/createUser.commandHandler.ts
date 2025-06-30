@@ -6,7 +6,7 @@ import { injectable } from 'tsyringe';
 @HandlerFor(CreateUserCommand)
 export class CreateUserCommandHandler implements Handler<CreateUserCommand> {
   async Handle(command: CreateUserCommand): Promise<void> {
-    // console.log(command);
-    await new Promise(resolve => resolve);
+    console.log(command);
+    await new Promise<void>(resolve => resolve());
   }
 }

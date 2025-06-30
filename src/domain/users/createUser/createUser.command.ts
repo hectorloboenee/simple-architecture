@@ -4,6 +4,6 @@ export class CreateUserCommand implements Command {
   constructor(
     public id: string,
     public username: string,
-    public pasword: string
+    public password: string
   ) {}
 }
