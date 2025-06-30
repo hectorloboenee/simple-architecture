@@ -1,7 +1,7 @@
-import 'reflect-metadata';
-import 'dotenv/config';
+import './bootstrap';
 import { App } from './app';
 import { container } from 'tsyringe';
+import '@domain/users/createUser/createUser.commandHandler';
 
 const app = container.resolve(App);
 app.start().catch(e => {
