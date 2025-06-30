@@ -6,11 +6,7 @@ import { inject, injectable } from 'tsyringe';
 
 @injectable()
 export class SyncBus implements Bus {
-  private readonly commandHandlerFactory: HandlerFactory;
-
-  constructor(@inject('HandlerFactory') commandHandlerFactory: HandlerFactory) {
-    this.commandHandlerFactory = commandHandlerFactory;
-  }
+  constructor(@inject('HandlerFactory') private commandHandlerFactory: HandlerFactory) {}
 
   async Dispatch<TCommand extends Command>(command: TCommand): Promise<void> {
     if (command === null) {
