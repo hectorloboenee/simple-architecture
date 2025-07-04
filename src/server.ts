@@ -8,6 +8,8 @@ import { injectable } from 'tsyringe';
 import { Builder } from '@architecture/routes/builder';
 import { env } from './environment';
 import { RegisterCqrs } from '@architecture/ioc/cqrs/register';
+import validationException from '@architecture/domain/validationException';
+import domainException from '@architecture/domain/domainException';
 
 @injectable()
 export class Server {
@@ -33,8 +35,10 @@ export class Server {
 
     this.endpointRegister.registerEndpoints();
 
+    this.express.use(validationException);
+    this.express.use(domainException);
+
     router.use((err: Error, request: Request, response: Response, next: Function) => {
-      console.log(err);
       response.status(httpStatus.INTERNAL_SERVER_ERROR).send(err.message);
     });
   }

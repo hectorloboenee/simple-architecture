@@ -13,9 +13,8 @@ export class SyncBusDecorator implements Bus {
   async Dispatch<TCommand extends Command>(command: TCommand): Promise<void> {
     const commandValidator = this.validatorFactory.CreateValidator(command);
     const isValid = await commandValidator.validate(command);
-    if (!isValid) {
-      throw new Error('Command not pass the validation');
+    if (isValid) {
+      await this.bus.Dispatch(command);
     }
-    await this.bus.Dispatch(command);
   }
 }

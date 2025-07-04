@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 @injectable()
 export default class CreateUser extends Endpoint {
-  constructor(@inject('SyncBus') private bus: Bus) {
+  constructor(@inject('SyncBusDecorator') private bus: Bus) {
     super();
     this.bus = bus;
   }

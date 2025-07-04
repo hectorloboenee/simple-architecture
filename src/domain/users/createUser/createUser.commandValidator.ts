@@ -1,4 +1,3 @@
-import { Command } from '@architecture/cqrs/command/command';
 import { ValidatorBase } from '@architecture/cqrs/validation/validatorBase';
 import { CreateUserCommand } from '@domain/users/createUser/createUser.command';
 import { object, Schema, string } from 'yup';
@@ -10,7 +9,7 @@ export class CreateUserValidator extends ValidatorBase<CreateUserCommand> {
     const schema: Schema = object({
       id: string().required(),
       username: string().required(),
-      password: string().required()
+      password: string().min(8).required()
     });
     super(schema);
   }
