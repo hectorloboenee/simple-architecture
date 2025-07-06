@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "NODE_ENV=dev ts-node-dev --ignore-watch node_modules --require tsconfig-paths/register ./src/start.ts",
+    "dev": "NODE_ENV=dev ts-node-dev --ignore-watch node_modules --require tsconfig-paths/register src/start.ts",
+    "migration:create": "ts-node src/architecture/data/migrations/commands/createMigration.ts",
+    "migration:run": "ts-node src/architecture/data/migrations/commands/runMigration.ts",
+    "migration:revert": "ts-node src/architecture/data/migrations/commands/revertMigration.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -21,9 +24,11 @@
     "express-validator": "^7.2.1",
     "glob": "^11.0.3",
     "http-status": "^2.1.0",
+    "pg": "^8.16.3",
     "reflect-metadata": "^0.2.2",
     "ts-node": "^10.9.2",
     "tsyringe": "^4.10.0",
+    "typeorm": "^0.3.25",
     "typescript": "^5.8.3",
     "uuid": "^11.1.0",
     "yup": "^1.6.1"
@@ -36,6 +41,7 @@
     "@types/cors": "^2.8.19",
     "@types/errorhandler": "^1.5.3",
     "@types/express": "^5.0.3",
+    "@types/node": "^24.0.10",
     "@types/uuid": "^10.0.0",
     "eslint": "^9.30.0",
     "eslint-config-prettier": "^10.1.5",

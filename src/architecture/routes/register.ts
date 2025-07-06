@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { glob } from 'glob';
-import { API_DIRNAME } from '../../root';
+import root from '../../root';
 import { container, injectable } from 'tsyringe';
 import { Endpoint } from '@architecture/routes/endpoint';
 
@@ -13,7 +13,7 @@ export class Register {
   }
 
   public registerEndpoints(): void {
-    const endpointsPaths = glob.sync(`${API_DIRNAME}/**/*.endpoint.*`);
+    const endpointsPaths = glob.sync(`${root.API_DIRNAME}/**/*.endpoint.*`);
     endpointsPaths.map(endpointPath => this.register(endpointPath));
   }
 
