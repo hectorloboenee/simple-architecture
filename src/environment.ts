@@ -8,8 +8,18 @@ const getEnv = (key: string) => {
 
 interface envConfig {
   PORT: number;
+  DATABASE_HOST: string;
+  DATABASE_PORT: number;
+  DATABASE_USER: string;
+  DATABASE_PASSWORD: string;
+  DATABASE: string;
 }
 
 export const env: envConfig = {
-  PORT: parseInt(getEnv('PORT'), 10)
+  PORT: parseInt(getEnv('PORT'), 10),
+  DATABASE_HOST: getEnv('DATABASE_HOST'),
+  DATABASE_PORT: parseInt(getEnv('DATABASE_PORT')),
+  DATABASE_USER: getEnv('DATABASE_USER'),
+  DATABASE_PASSWORD: getEnv('DATABASE_PASSWORD'),
+  DATABASE: getEnv('DATABASE')
 };
