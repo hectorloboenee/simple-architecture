@@ -5,7 +5,7 @@ import { container, injectable } from 'tsyringe';
 
 @injectable()
 export class CommandValidatorFactory implements ValidatorFactory {
-  CreateValidator<TCommand extends Command>(command: TCommand): Validator<TCommand> {
+  createValidator<TCommand extends Command>(command: TCommand): Validator<TCommand> {
     const validator = Reflect.getMetadata('command:validator', command.constructor);
     if (!validator) {
       throw new Error(`${command} is not a valid command`);

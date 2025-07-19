@@ -10,11 +10,11 @@ export class SyncBusDecorator implements Bus {
     @inject('ValidatorFactory') private validatorFactory: ValidatorFactory
   ) {}
 
-  async Dispatch<TCommand extends Command>(command: TCommand): Promise<void> {
-    const commandValidator = this.validatorFactory.CreateValidator(command);
+  async dispatch<TCommand extends Command>(command: TCommand): Promise<void> {
+    const commandValidator = this.validatorFactory.createValidator(command);
     const isValid = await commandValidator.validate(command);
     if (isValid) {
-      await this.bus.Dispatch(command);
+      await this.bus.dispatch(command);
     }
   }
 }

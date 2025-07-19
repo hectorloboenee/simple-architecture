@@ -1,7 +1,7 @@
 import { exec } from 'child_process';
 import root from '../../../../root';
 import { glob } from 'glob';
-import { MigrationCommand } from '../../../data/migrations/commands/migrationCommand';
+import { MigrationCommand } from '@common/data/migrations/commands/migrationCommand';
 
 class RunMigrationCommand implements MigrationCommand {
   private readonly dataSource: string;

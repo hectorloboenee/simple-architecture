@@ -5,7 +5,7 @@ import { container, injectable } from 'tsyringe';
 
 @injectable()
 export class CommandHandlerFactory implements HandlerFactory {
-  CreateHandler<TCommand extends Command>(command: TCommand): Handler<TCommand> {
+  createHandler<TCommand extends Command>(command: TCommand): Handler<TCommand> {
     const handler = Reflect.getMetadata('command:handler', command.constructor);
     if (!handler) {
       throw new Error(`Unknown handler: ${command.constructor.name}`);

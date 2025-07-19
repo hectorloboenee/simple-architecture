@@ -6,7 +6,7 @@ import { DomainException } from '@common/domain/domainException';
 
 @HandlerFor(CreateUserCommand)
 export class CreateUserCommandHandler implements Handler<CreateUserCommand> {
-  async Handle(command: CreateUserCommand): Promise<void> {
+  async handle(command: CreateUserCommand): Promise<void> {
     throw new DomainException('Domain exception');
     // await new Promise<void>(resolve => resolve());
   }
