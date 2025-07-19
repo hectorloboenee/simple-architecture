@@ -1,9 +1,9 @@
 import { exec } from 'child_process';
 import root from '../../../../root';
 import { glob } from 'glob';
-import { MigrationCommand } from '@architecture/data/migrations/commands/migrationCommand';
+import { MigrationCommand } from '../../../data/migrations/commands/migrationCommand';
 
-class RunMigrationCommand implements MigrationCommand {
+class RevertMigrationCommand implements MigrationCommand {
   private readonly dataSource: string;
   private directory: string = `${root.DATA_DIRNAME}`;
 
@@ -37,7 +37,7 @@ class RunMigrationCommand implements MigrationCommand {
 
   exec(): void {
     if (this.validate()) {
-      const command = `pnpm ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run --dataSource ${this.directory}/${this.dataSource}`;
+      const command = `pnpm ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:revert --dataSource ${this.directory}/${this.dataSource}`;
       exec(command, (err, stdout, stderr) => {
         if (err) {
           throw new Error(`Error running migration: ${err}`);
@@ -58,7 +58,7 @@ class RunMigrationCommand implements MigrationCommand {
 
 function runCommand() {
   const arg: string = process.argv[2];
-  using myInstance = new RunMigrationCommand(arg);
+  using myInstance = new RevertMigrationCommand(arg);
   myInstance.exec();
 }
 

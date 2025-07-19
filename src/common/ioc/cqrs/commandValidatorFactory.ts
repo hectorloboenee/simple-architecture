@@ -1,6 +1,6 @@
-import { ValidatorFactory } from '@architecture/cqrs/validation/validatorFactory';
-import { Command } from '@architecture/cqrs/command/command';
-import { Validator } from '@architecture/cqrs/validation/validator';
+import { ValidatorFactory } from '../../cqrs/validation/validatorFactory';
+import { Command } from '../../cqrs/command/command';
+import { Validator } from '../../cqrs/validation/validator';
 import { container, injectable } from 'tsyringe';
 
 @injectable()

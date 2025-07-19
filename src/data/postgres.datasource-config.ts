@@ -2,7 +2,7 @@ import { DataSource } from 'typeorm';
 import 'dotenv/config';
 import root from '../root';
 import { env } from '../environment';
-import { Connector } from '@architecture/data/connectors/postgres';
+import { Connector } from '@common/data/connectors/postgres';
 
 const postgresDatasourceConfig: DataSource = Connector.setup({
   type: 'postgres',

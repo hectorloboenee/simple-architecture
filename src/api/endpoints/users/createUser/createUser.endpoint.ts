@@ -1,5 +1,5 @@
-import { Endpoint } from '@architecture/routes/endpoint';
-import { Bus } from '@architecture/cqrs/command/Bus';
+import { Endpoint } from '@common/routes/endpoint';
+import { Bus } from '@common/cqrs/command/Bus';
 import { inject, injectable } from 'tsyringe';
 import { CreateUserCommand } from '@domain/users/createUser/createUser.command';
 import httpStatus from 'http-status';

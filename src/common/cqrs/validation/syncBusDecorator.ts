@@ -1,5 +1,5 @@
-import { Bus } from '@architecture/cqrs/command/Bus';
-import { Command } from '@architecture/cqrs/command/command';
+import { Bus } from '../../cqrs/command/Bus';
+import { Command } from '../../cqrs/command/command';
 import { inject, injectable } from 'tsyringe';
 import { ValidatorFactory } from './validatorFactory';
 

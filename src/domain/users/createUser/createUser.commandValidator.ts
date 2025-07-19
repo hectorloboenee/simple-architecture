@@ -1,7 +1,7 @@
-import { ValidatorBase } from '@architecture/cqrs/validation/validatorBase';
+import { ValidatorBase } from '@common/cqrs/validation/validatorBase';
 import { CreateUserCommand } from '@domain/users/createUser/createUser.command';
 import { object, Schema, string } from 'yup';
-import { ValidatorFor } from '@architecture/cqrs/validation/validatorFor';
+import { ValidatorFor } from '@common/cqrs/validation/validatorFor';
 
 @ValidatorFor(CreateUserCommand)
 export class CreateUserValidator extends ValidatorBase<CreateUserCommand> {

@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { glob } from 'glob';
 import root from '../../root';
 import { container, injectable } from 'tsyringe';
-import { Endpoint } from '@architecture/routes/endpoint';
+import { Endpoint } from '../routes/endpoint';
 
 @injectable()
 export class Register {

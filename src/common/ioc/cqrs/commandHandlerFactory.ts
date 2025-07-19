@@ -1,6 +1,6 @@
-import { HandlerFactory } from '@architecture/cqrs/command/handlerFactory';
-import { Command } from '@architecture/cqrs/command/command';
-import { Handler } from '@architecture/cqrs/command/handler';
+import { HandlerFactory } from '../../cqrs/command/handlerFactory';
+import { Command } from '../../cqrs/command/command';
+import { Handler } from '../../cqrs/command/handler';
 import { container, injectable } from 'tsyringe';
 
 @injectable()

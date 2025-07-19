@@ -1,6 +1,6 @@
 import { exec } from 'child_process';
 import root from '../../../../root';
-import { MigrationCommand } from '@architecture/data/migrations/commands/migrationCommand';
+import { MigrationCommand } from '../../../data/migrations/commands/migrationCommand';
 
 class CreateMigrationCommand implements MigrationCommand {
   private readonly name!: string;

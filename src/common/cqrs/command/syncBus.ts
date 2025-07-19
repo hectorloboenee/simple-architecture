@@ -1,7 +1,7 @@
-import { Bus } from '@architecture/cqrs/command/Bus';
-import { Command } from '@architecture/cqrs/command/command';
-import { HandlerFactory } from '@architecture/cqrs/command/handlerFactory';
-import { Handler } from '@architecture/cqrs/command/handler';
+import { Bus } from '../../cqrs/command/Bus';
+import { Command } from '../../cqrs/command/command';
+import { HandlerFactory } from '../../cqrs/command/handlerFactory';
+import { Handler } from '../../cqrs/command/handler';
 import { inject, injectable } from 'tsyringe';
 
 @injectable()
