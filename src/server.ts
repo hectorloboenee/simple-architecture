@@ -3,13 +3,13 @@ import * as http from 'http';
 import bodyParser from 'body-parser';
 import errorHandler from 'errorhandler';
 import httpStatus from 'http-status';
-import { Register } from '@architecture/routes/register';
+import { Register } from '@common/routes/register';
 import { injectable } from 'tsyringe';
-import { Builder } from '@architecture/routes/builder';
+import { Builder } from '@common/routes/builder';
 import { env } from './environment';
-import { RegisterCqrs } from '@architecture/ioc/cqrs/register';
-import validationException from '@architecture/domain/validationException';
-import domainException from '@architecture/domain/domainException';
+import { RegisterCqrs } from '@common/ioc/cqrs/register';
+import validationException from './common/domain/validationException';
+import domainException from './common/domain/domainException';
 
 @injectable()
 export class Server {

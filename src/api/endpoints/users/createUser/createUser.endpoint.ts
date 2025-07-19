@@ -1,5 +1,5 @@
-import { Endpoint } from '@architecture/routes/endpoint';
-import { Bus } from '@architecture/cqrs/command/Bus';
+import { Endpoint } from '@common/routes/endpoint';
+import { Bus } from '@common/cqrs/command/Bus';
 import { inject, injectable } from 'tsyringe';
 import { CreateUserCommand } from '@domain/users/createUser/createUser.command';
 import httpStatus from 'http-status';
@@ -17,7 +17,7 @@ export default class CreateUser extends Endpoint {
     this.router.post('/users', async (request: Request, response: Response) => {
       const id: string = uuidv4();
       const createUser: CreateUserCommand = new CreateUserCommand(id, 'hloboc', 'password1234');
-      await this.bus.Dispatch(createUser);
+      await this.bus.dispatch(createUser);
       response.status(httpStatus.CREATED).json({ id: id });
     });
   }

@@ -1,4 +1,4 @@
-import { Command } from '@architecture/cqrs/command/command';
+import { Command } from '@common/cqrs/command/command';
 
 export class CreateUserCommand implements Command {
   constructor(

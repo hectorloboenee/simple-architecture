@@ -1,5 +1,5 @@
-import { Bus } from '@architecture/cqrs/command/Bus';
-import { Command } from '@architecture/cqrs/command/command';
+import { Bus } from '../../cqrs/command/Bus';
+import { Command } from '../../cqrs/command/command';
 import { inject, injectable } from 'tsyringe';
 import { ValidatorFactory } from './validatorFactory';
 
@@ -10,11 +10,11 @@ export class SyncBusDecorator implements Bus {
     @inject('ValidatorFactory') private validatorFactory: ValidatorFactory
   ) {}
 
-  async Dispatch<TCommand extends Command>(command: TCommand): Promise<void> {
-    const commandValidator = this.validatorFactory.CreateValidator(command);
+  async dispatch<TCommand extends Command>(command: TCommand): Promise<void> {
+    const commandValidator = this.validatorFactory.createValidator(command);
     const isValid = await commandValidator.validate(command);
     if (isValid) {
-      await this.bus.Dispatch(command);
+      await this.bus.dispatch(command);
     }
   }
 }
