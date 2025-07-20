@@ -3,7 +3,7 @@ import { CommandHandlerFor } from '@common/domain/cqrs/command/CommandHandlerFor
 import { CommandHandler } from '@common/domain/cqrs/command/CommandHandler';
 import { injectable } from 'tsyringe';
 
-import { DomainException } from '@common/domain/cqrs/command/DomainException';
+import { DomainException } from '@common/domain/DomainException';
 
 @CommandHandlerFor(CreateUserCommand)
 export class CreateUserCommandHandler implements CommandHandler<CreateUserCommand> {

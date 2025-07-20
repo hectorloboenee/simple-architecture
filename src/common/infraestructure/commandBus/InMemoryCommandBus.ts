@@ -1,12 +1,12 @@
 import { CommandBus } from '../../domain/cqrs/command/CommandBus';
 import { Command } from '../../domain/cqrs/command/Command';
-import { HandlerFactory } from '../../domain/cqrs/command/HandlerFactory';
+import { HandlerCommandFactory } from '../../domain/cqrs/command/HandlerCommandFactory';
 import { CommandHandler } from '../../domain/cqrs/command/CommandHandler';
 import { inject, injectable } from 'tsyringe';
 
 @injectable()
 export class InMemoryCommandBus implements CommandBus {
-  constructor(@inject('HandlerFactory') private _commandHandlerFactory: HandlerFactory) {}
+  constructor(@inject('HandlerCommandFactory') private _commandHandlerFactory: HandlerCommandFactory) {}
 
   async dispatch<TCommand extends Command>(command: TCommand): Promise<void> {
     if (command === null) {
