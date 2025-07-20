@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import httpStatus from 'http-status';
-import { DomainException } from '@common/domain/cqrs/command/DomainException';
+import { DomainException } from '@common/domain/DomainException';
 
 const domainException = (error: any, request: Request, response: Response, next: Function) => {
   if (error instanceof DomainException) {

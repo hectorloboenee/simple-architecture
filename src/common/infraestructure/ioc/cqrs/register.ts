@@ -1,11 +1,11 @@
 import { container } from 'tsyringe';
 import { HandlerFactory } from '@common/domain/cqrs/command/HandlerFactory';
-import { CommandHandlerFactory } from './commandHandlerFactory';
+import { CommandHandlerFactory } from './CommandHandlerFactory';
 import { CommandBus } from '@common/domain/cqrs/command/CommandBus';
 import { InMemoryCommandBus } from '@common/infraestructure/commandBus/InMemoryCommandBus';
 import { InMemoryCommandBusDecorator } from '@common/infraestructure/commandBus/InMemoryCommandBusDecorator';
 import { ValidatorFactory } from '@common/domain/cqrs/validation/ValidatorFactory';
-import { CommandValidatorFactory } from './commandValidatorFactory';
+import { CommandValidatorFactory } from './CommandValidatorFactory';
 
 export class RegisterCqrs {
   public static register(): void {
