@@ -1,11 +1,12 @@
 import { CreateUserCommand } from '@domain/users/createUser/createUser.command';
-import { HandlerFor } from '@common/cqrs/command/handlerFor';
-import { Handler } from '@common/cqrs/command/handler';
+import { CommandHandlerFor } from '@common/domain/cqrs/command/CommandHandlerFor';
+import { CommandHandler } from '@common/domain/cqrs/command/CommandHandler';
 import { injectable } from 'tsyringe';
-import { DomainException } from '@common/domain/domainException';
 
-@HandlerFor(CreateUserCommand)
-export class CreateUserCommandHandler implements Handler<CreateUserCommand> {
+import { DomainException } from '@common/domain/cqrs/command/DomainException';
+
+@CommandHandlerFor(CreateUserCommand)
+export class CreateUserCommandHandler implements CommandHandler<CreateUserCommand> {
   async handle(command: CreateUserCommand): Promise<void> {
     throw new DomainException('Domain exception');
     // await new Promise<void>(resolve => resolve());

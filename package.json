@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "NODE_ENV=dev ts-node-dev --ignore-watch node_modules --require tsconfig-paths/register src/start.ts",
-    "migration:create": "ts-node src/common/data/migrations/commands/createMigration.ts",
-    "migration:run": "ts-node src/common/data/migrations/commands/runMigration.ts",
-    "migration:revert": "ts-node src/common/data/migrations/commands/revertMigration.ts",
+    "migration:create": "ts-node src/common/infraestructure/data/migrations/commands/createMigration.ts",
+    "migration:run": "ts-node src/common/infraestructure/data/migrations/commands/runMigration.ts",
+    "migration:revert": "ts-node src/common/infraestructure/data/migrations/commands/revertMigration.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -15,6 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^2.2.0",
+    "convict": "^6.2.4",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^17.0.0",

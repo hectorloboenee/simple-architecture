@@ -1,6 +1,6 @@
 import { Server } from './server';
 import { container, injectable } from 'tsyringe';
-import { Builder } from '@common/routes/builder';
+import { Builder } from '@config/endpoints/builder';
 
 @injectable()
 export class App {
