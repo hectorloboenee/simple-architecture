@@ -1,13 +1,13 @@
 import { CommandBus } from '../../domain/cqrs/command/CommandBus';
 import { Command } from '../../domain/cqrs/command/Command';
 import { inject, injectable } from 'tsyringe';
-import { ValidatorFactory } from '../../domain/cqrs/validation/ValidatorFactory';
+import { ValidatorCommandFactory } from '../../domain/cqrs/validation/ValidatorCommandFactory';
 
 @injectable()
 export class InMemoryCommandBusDecorator implements CommandBus {
   constructor(
     @inject('InMemoryCommandBus') private _commandBus: CommandBus,
-    @inject('ValidatorFactory') private _validatorFactory: ValidatorFactory
+    @inject('ValidatorCommandFactory') private _validatorFactory: ValidatorCommandFactory
   ) {}
 
   async dispatch<TCommand extends Command>(command: TCommand): Promise<void> {
