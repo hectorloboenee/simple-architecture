@@ -1,10 +1,10 @@
-import { ValidatorBase } from '@common/cqrs/validation/validatorBase';
+import { CommandValidatorBase } from '@common/domain/cqrs/validation/CommandValidatorBase';
 import { CreateUserCommand } from '@domain/users/createUser/createUser.command';
 import { object, Schema, string } from 'yup';
-import { ValidatorFor } from '@common/cqrs/validation/validatorFor';
+import { CommandValidatorFor } from '@common/domain/cqrs/validation/CommandValidatorFor';
 
-@ValidatorFor(CreateUserCommand)
-export class CreateUserValidator extends ValidatorBase<CreateUserCommand> {
+@CommandValidatorFor(CreateUserCommand)
+export class CreateUserValidator extends CommandValidatorBase<CreateUserCommand> {
   constructor() {
     const schema: Schema = object({
       id: string().required(),
