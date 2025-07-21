@@ -1,13 +1,12 @@
-import { Event } from '@common/domain/events/Event';
-import { string } from 'yup';
+import { BaseDomainEvent } from '@common/domain/events/Event';
 
-export class DomainEvent implements Event<string> {
-  aggregateId: string;
+export class DomainEvent<T> implements BaseDomainEvent<T> {
+  aggregateId: T;
   private _aggregateName!: string;
   private _aggregateType!: string;
   private _description!: string;
 
-  constructor(aggregateId: string) {
+  constructor(aggregateId: T) {
     this.aggregateId = aggregateId;
   }
 

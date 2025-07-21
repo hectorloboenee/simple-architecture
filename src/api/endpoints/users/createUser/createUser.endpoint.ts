@@ -1,7 +1,7 @@
 import { Endpoint } from '@config/endpoints/endpoint';
 import { CommandBus } from '@common/domain/cqrs/command/CommandBus';
 import { inject, injectable } from 'tsyringe';
-import { CreateUserCommand } from '@domain/users/createUser/createUser.command';
+import { CreateUserCommand } from '@domain/users/createUser/CreateUser.command';
 import httpStatus from 'http-status';
 import { Request, Response } from 'express';
 import { v4 as uuidv4 } from 'uuid';
