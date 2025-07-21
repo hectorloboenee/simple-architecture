@@ -1,5 +1,5 @@
 import { CommandValidatorBase } from '@common/domain/cqrs/validation/CommandValidatorBase';
-import { CreateUserCommand } from '@domain/users/createUser/createUser.command';
+import { CreateUserCommand } from '@domain/users/createUser/CreateUser.command';
 import { object, Schema, string } from 'yup';
 import { CommandValidatorFor } from '@common/domain/cqrs/validation/CommandValidatorFor';
 

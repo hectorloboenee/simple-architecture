@@ -1,11 +1,12 @@
 import { DomainEvent } from '@common/domain/events/DomainEvent';
 import { Aggregate } from '@common/domain/Aggregate';
+import { BaseEvent } from '@common/domain/events/Event';
 
 export abstract class AggregateRoot<TId> implements Aggregate<TId> {
   abstract id: TId;
-  private domainEvents: DomainEvent[] = [];
+  private domainEvents: BaseEvent[] = [];
 
-  getDomainEvents(): DomainEvent[] {
+  getDomainEvents(): BaseEvent[] {
     return [...this.domainEvents.slice()];
   }
 
@@ -13,7 +14,7 @@ export abstract class AggregateRoot<TId> implements Aggregate<TId> {
     this.domainEvents = [];
   }
 
-  record(event: DomainEvent): void {
+  protected record(event: BaseEvent): void {
     this.domainEvents.push(event);
   }
 }

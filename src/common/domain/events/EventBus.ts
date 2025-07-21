@@ -1,5 +1,5 @@
-import { DomainEvent } from '@common/domain/events/DomainEvent';
+import { BaseEvent } from '@common/domain/events/Event';
 
 export interface EventBus {
-  publish<TEvent extends DomainEvent>(event: TEvent): Promise<void>;
+  publish<TEvent extends BaseEvent>(event: TEvent): Promise<void>;
 }

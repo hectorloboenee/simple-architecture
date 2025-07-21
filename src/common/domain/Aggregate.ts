@@ -1,8 +1,7 @@
 import { Entity } from '@common/infraestructure/data/common/entity';
-import { DomainEvent } from '@common/domain/events/DomainEvent';
+import { BaseEvent } from '@common/domain/events/Event';
 
 export interface Aggregate<TId> extends Entity<TId> {
-  getDomainEvents(): DomainEvent[];
-
+  getDomainEvents(): BaseEvent[];
   clearDomainEvents(): void;
 }

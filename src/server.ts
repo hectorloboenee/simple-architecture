@@ -7,9 +7,10 @@ import { Register } from '@config/endpoints/register';
 import { injectable } from 'tsyringe';
 import { Builder } from '@config/endpoints/builder';
 import { env } from './environment';
-import { RegisterCqrs } from '@common/infraestructure/ioc/cqrs/register';
+import { RegisterCqrs } from '@common/infraestructure/ioc/cqrs/RegisterCqrs';
 import validationException from '@common/infraestructure/middlewares/ValidationException';
 import domainException from '@common/infraestructure/middlewares/DomainException';
+import { RegisterEvents } from '@common/infraestructure/ioc/events/RegisterEvents';
 
 @injectable()
 export class Server {
@@ -32,6 +33,7 @@ export class Server {
     this.endpointRegister.use(router);
 
     RegisterCqrs.register();
+    RegisterEvents.register();
 
     this.endpointRegister.registerEndpoints();
 
